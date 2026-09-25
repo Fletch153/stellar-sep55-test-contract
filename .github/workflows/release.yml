@@ -1,0 +1,22 @@
+name: Build and release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: write
+  attestations: write
+
+jobs:
+  release:
+    uses: stellar-expert/soroban-build-workflow/.github/workflows/release.yml@main
+    with:
+      release_name: ${{ github.ref_name }}
+      relative_path: contracts/sep55-test
+      package: sep55-test
+      release_description: SEP-55 test contract
+    secrets:
+      release_token: ${{ secrets.GITHUB_TOKEN }}
