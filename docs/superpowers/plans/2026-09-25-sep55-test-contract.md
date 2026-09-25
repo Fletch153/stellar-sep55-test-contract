@@ -1,6 +1,6 @@
 # SEP-55 Test Contract Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Build, attest, deploy, and inspect a minimal Soroban contract using StellarExpert's official workflow and exact release artifact.
 
@@ -29,7 +29,7 @@
 **Interfaces:**
 - Produces: Soroban package `sep55-test` exporting `ping() -> Symbol` with no constructor.
 
-- [ ] **Step 1: Add a failing unit test**
+- [x] **Step 1: Add a failing unit test**
 
 ```rust
 #[test]
@@ -41,13 +41,13 @@ fn ping_returns_pong() {
 }
 ```
 
-- [ ] **Step 2: Run `cargo test -p sep55-test` and confirm missing implementation failure**
+- [x] **Step 2: Run `cargo test -p sep55-test` and confirm missing implementation failure**
 
-- [ ] **Step 3: Implement `Sep55Test::ping` returning `symbol_short!("pong")`**
+- [x] **Step 3: Implement `Sep55Test::ping` returning `symbol_short!("pong")`**
 
-- [ ] **Step 4: Run `cargo test -p sep55-test`; expect one passing test**
+- [x] **Step 4: Run `cargo test -p sep55-test`; expect one passing test**
 
-- [ ] **Step 5: Commit contract files with `Add SEP-55 test contract`**
+- [x] **Step 5: Commit contract files with `Add SEP-55 test contract`**
 
 ### Task 2: Official release workflow
 
@@ -58,7 +58,7 @@ fn ping_returns_pong() {
 - Consumes: Cargo package `sep55-test`.
 - Produces: tagged GitHub release, optimized WASM, GitHub provenance attestation, and StellarExpert match notification.
 
-- [ ] **Step 1: Add tag-triggered workflow using `stellar-expert/soroban-build-workflow/.github/workflows/release.yml@main`**
+- [x] **Step 1: Add tag-triggered workflow using `stellar-expert/soroban-build-workflow/.github/workflows/release.yml@main`**
 
 ```yaml
 name: Build and release
@@ -81,9 +81,9 @@ jobs:
       release_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-- [ ] **Step 2: Parse workflow as YAML and inspect permission/event values**
+- [x] **Step 2: Parse workflow as YAML and inspect permission/event values**
 
-- [ ] **Step 3: Commit workflow with `Add official SEP-55 release workflow`**
+- [x] **Step 3: Commit workflow with `Add official SEP-55 release workflow`**
 
 ### Task 3: Release and deploy
 
@@ -94,12 +94,12 @@ jobs:
 - Consumes: `v0.1.0` release artifact.
 - Produces: funded ephemeral identity and Stellar testnet contract ID.
 
-- [ ] **Step 1: Push commits and tag `v0.1.0`**
-- [ ] **Step 2: Watch workflow to completion and capture StellarExpert response from logs**
-- [ ] **Step 3: Download release WASM into temporary storage**
-- [ ] **Step 4: Verify SHA-256, `source_repo`, and `gh attestation verify`**
-- [ ] **Step 5: Generate identity under temporary `XDG_CONFIG_HOME` and fund it via Friendbot**
-- [ ] **Step 6: Deploy exact release WASM to Stellar testnet and record contract ID**
+- [x] **Step 1: Push commits and tag `v0.1.0`**
+- [x] **Step 2: Watch workflow to completion and capture StellarExpert response from logs**
+- [x] **Step 3: Download release WASM into temporary storage**
+- [x] **Step 4: Verify SHA-256, `source_repo`, and `gh attestation verify`**
+- [x] **Step 5: Generate identity under temporary `XDG_CONFIG_HOME` and fund it via Friendbot**
+- [x] **Step 6: Deploy exact release WASM to Stellar testnet and record contract ID**
 
 ### Task 4: Verification experiment
 
@@ -110,9 +110,9 @@ jobs:
 - Consumes: release WASM and deployed contract ID.
 - Produces: durable public experiment report without secrets.
 
-- [ ] **Step 1: Fetch deployed WASM and compare byte-for-byte with release**
-- [ ] **Step 2: Verify fetched WASM with `gh attestation verify`**
-- [ ] **Step 3: Query StellarExpert testnet contract API and record `validation.status`**
-- [ ] **Step 4: If fresh hash is unverified, deploy a known verified WASM control and query its status**
-- [ ] **Step 5: Write README evidence: release, run, contract IDs, hashes, response, and status**
-- [ ] **Step 6: Commit and push report with `Document SEP-55 test results`**
+- [x] **Step 1: Fetch deployed WASM and compare byte-for-byte with release**
+- [x] **Step 2: Verify fetched WASM with `gh attestation verify`**
+- [x] **Step 3: Query StellarExpert testnet contract API and record `validation.status`**
+- [x] **Step 4: If fresh hash is unverified, deploy a known verified WASM control and query its status**
+- [x] **Step 5: Write README evidence: release, run, contract IDs, hashes, response, and status**
+- [x] **Step 6: Commit and push report with `Document SEP-55 test results`**
